@@ -9,6 +9,7 @@ export const login = async (email: string, password: string): Promise<string> =>
     const response = await axios.post(`${URL}/auth/user`, { email, password });
     return response.data.token;
   } catch (error) {
+    console.log(error);
     throw new Error('Falha ao realizar login');
   }
 };
