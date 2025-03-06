@@ -20,7 +20,9 @@ export default function IndexScreen() {
       router.replace('/Login') ;
       
     }}, 10)
-  }, [token]);
+
+    return () => clearTimeout(timeout);
+  }, [token, router]);
 return null
 
 }
