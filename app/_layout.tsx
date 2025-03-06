@@ -5,12 +5,16 @@ import {
 	ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Slot, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+
+// importing tailwind css
+import "../global.css"
+
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -56,9 +60,10 @@ function RootLayoutNav() {
 	return (
 		<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
 			<Stack>
-				<Stack.Screen name="index" options={{ headerShown: false }} /> 
+				<Stack.Screen name="index" options={{ headerShown: false }} />
+				<Stack.Screen name="NewsList" options={{ headerTitle: "TINTIN" }} />
+				<Stack.Screen name="Login" options={{ headerShown: false }} />
 			</Stack>
-
 		</ThemeProvider>
 	);
 }

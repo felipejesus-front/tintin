@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import api from '../../services/api';
+import api from '@/services/api';
 
 const NewsList = () => {
   const [news, setNews] = useState<any[]>([]);

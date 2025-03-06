@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const JANUS_API_URL = 'https://seu-endpoint-janus.com';
+const URL = process.env.EXPO_PUBLIC_API_URL;
+
+
 
 export const login = async (email: string, password: string): Promise<string> => {
   try {
-    const response = await axios.post(`${JANUS_API_URL}/login`, { email, password });
-    // Supondo que a resposta contenha { token: "JWT..." }
+    const response = await axios.post(`${URL}/auth/user`, { email, password });
     return response.data.token;
   } catch (error) {
+    console.log(error);
     throw new Error('Falha ao realizar login');
   }
 };
