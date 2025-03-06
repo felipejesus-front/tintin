@@ -12,6 +12,10 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
+// importing tailwind css
+import "../global.css"
+
+
 export {
 	// Catch any errors thrown by the Layout component.
 	ErrorBoundary,
@@ -56,9 +60,10 @@ function RootLayoutNav() {
 	return (
 		<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
 			<Stack>
-				<Stack.Screen name="index" options={{ headerShown: false }} /> 
+				<Stack.Screen name="index" options={{ headerShown: false }} />
+				<Stack.Screen name="NewsList" options={{ headerTitle: "TINTIN" }} />
+				<Stack.Screen name="Login" options={{ headerShown: false }} />
 			</Stack>
-
 		</ThemeProvider>
 	);
 }
