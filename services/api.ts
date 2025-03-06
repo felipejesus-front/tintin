@@ -1,7 +1,7 @@
 import axios from 'axios';
 import useUserStore from '../store/userStore';
 
-const URL = process.env.JANUS_API_URL;
+const URL = process.env.EXPO_PUBLIC_API_URL;
 
 
 // Crie uma instância do axios
