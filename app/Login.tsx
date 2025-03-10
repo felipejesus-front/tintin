@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from 'expo-router';
 import { login } from '@/services/auth';
 import useUserStore from '@/store/userStore';
+
 
 type FormData = {
   email: string;
@@ -29,8 +30,13 @@ const Login = () => {
   };
 
   return (
-    <View className="flex-1 items-center justify-center p-4">
-      <Text className="text-2xl font-bold mb-4">Login</Text>
+    <View className="flex-1 items-center justify-center p-4 bg-m-blue">
+      <Image
+        source={require('../assets/images/Logo.png')}
+        style={{ width: 342, height: 214 }} // ajuste o tamanho conforme necessário
+      />
+
+      <Text className="text-black text-3xl font-bold mb-5">Login</Text>
 
       <Controller
         control={control}
@@ -42,7 +48,7 @@ const Login = () => {
               placeholder="Email"
               value={value}
               onChangeText={onChange}
-              className="border p-2 mb-2 w-full"
+              className="border border-slate-100 bg-white p-2 w-full rounded-md"
             />
             {error && <Text className="text-red-500">{error.message}</Text>}
           </>
@@ -60,15 +66,15 @@ const Login = () => {
               secureTextEntry
               value={value}
               onChangeText={onChange}
-              className="border p-2 mb-2 w-full"
+              className="border border-slate-100 bg-white p-2 mt-5 w-full rounded-md"
             />
             {error && <Text className="text-red-500">{error.message}</Text>}
           </>
         )}
       />
 
-      <TouchableOpacity onPress={handleSubmit(onSubmit)} className="bg-blue-500 p-3 rounded mt-4">
-        <Text className="text-white text-center">Entrar</Text>
+      <TouchableOpacity onPress={handleSubmit(onSubmit)} className="border px-6 py-3 rounded  mt-4 bg-l-blue">
+        <Text className="text-black text-cente  ">Entrar</Text>
       </TouchableOpacity>
     </View>
   );

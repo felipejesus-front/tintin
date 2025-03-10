@@ -1,10 +1,9 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
 	DarkTheme,
 	DefaultTheme,
 	ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -12,8 +11,13 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
-// importing tailwind css
+// importing tailwind css and fonts
 import "../global.css"
+import { 
+	useFonts as useGoogleFonts, 
+	Inter_400Regular, 
+	Inter_500Medium,
+} from '@expo-google-fonts/inter';
 
 
 export {
@@ -30,10 +34,19 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-	const [loaded, error] = useFonts({
-		SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-		...FontAwesome.font,
+
+	// Carregando as fontes: Inter via expo-google-fonts, SpaceMono e FontAwesome
+	const [googleFontsLoaded, error] = useGoogleFonts({
+		Inter_400Regular,
+		Inter_500Medium,
 	});
+	
+	// const [customFontsLoaded, error] = useFonts({
+	// 	SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+	// 	...FontAwesome.font,
+	// });
+
+	const loaded = googleFontsLoaded;
 
 
 	// Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -61,9 +74,11 @@ function RootLayoutNav() {
 		<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
 			<Stack>
 				<Stack.Screen name="index" options={{ headerShown: false }} />
-				<Stack.Screen name="NewsList" options={{ headerTitle: "TINTIN" }} />
+				<Stack.Screen name="NewsList" options={{ headerTitle: "TINTIN"}} />
 				<Stack.Screen name="Login" options={{ headerShown: false }} />
 			</Stack>
 		</ThemeProvider>
 	);
 }
+
+
